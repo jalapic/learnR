@@ -1,6 +1,12 @@
 ## Very Brief guide to tidyr.
 
 
+# gather()
+# spread()
+# separate()
+# unite()
+
+
 # Another common issue in data analysis is to convert a "wide" dataframe to a "long" one.
 
 # e.g. this measles dataset.
