@@ -1,0 +1,18 @@
+### Exercise 1.
+
+1. Load the csv file "testscores.csv" into RStudio.
+
+2. Separate the name column into two columns of names - "last" and "first".
+
+3. Convert the data from wide format to long format.  The new dataframe should have columns - "last", "first", "gender", "education", "week", "score".
+The week column contains what week the tests were run, and the score columns contains the value of the test.
+
+4.  Answer the following questions:
+ - what is the average score on week 3 for female college students ?
+ - what is the average score on week 4 for male high-school students ?
+ - what is the average score on week 1 for females with advanced degree ?
+
+5. Make an exploratory plot of the average score across weeks by gender and educational level.
+
+
+
