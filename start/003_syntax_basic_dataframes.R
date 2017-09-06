@@ -12,7 +12,7 @@ rm(list = ls(all = TRUE))  # ugly code that you can literally just run - or use 
 #### Let's start with dataframes ####
 
 #set working directory
-setwd("C:/Users/James Curley/Dropbox/Work/R/sujen")  #put your folder address here
+setwd("C:/Users/James Curley/Dropbox/Work/R/")  #put your folder address here
 
 df<-read.csv("datasets/wheels.csv")
 
