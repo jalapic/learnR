@@ -13,7 +13,7 @@ getwd()  #where does RStudio think my working directory is
 
 
 
-setwd("C:/Users/James Curley/Dropbox/Work/R/NewKnowledge_R")          #type in the folder location you want to use here - can also set using Files panel in RStudio
+setwd("C:/Users/James Curley/Dropbox/Work/R")          #type in the folder location you want to use here - can also set using Files panel in RStudio
 
 
 
