@@ -4,10 +4,13 @@ This repo contains materials related to teaching "R programming for behavioral s
 
 The materials are  designed to be used during class with instruction by Prof Curley, but can be read alone also.
 
+\  
+
+\  
 
 
 
-# Weekly Material
+## Weekly Material
 
 
 ### Week 1.  Introduction to R – Data Structures & Syntax
