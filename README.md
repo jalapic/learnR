@@ -6,7 +6,9 @@ The materials are  designed to be used during class with instruction by Prof Cur
 
   
     
-      
+\    
+/    
+
 
 
 
