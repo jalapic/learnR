@@ -63,25 +63,25 @@ Before Class II (week4): Students will complete a makeover challenge assignment 
 
 The following reading materials are for reference.  Please have a look through to familiarize yourself for the class:
 
- 
+<br/> 
 
 _Overview of "grammar of graphics" principles:_
 
 Chapter 3 of G. Grolemund & H.Wickham, R for Data Science, O’Reilly, 2016.  http://r4ds.had.co.nz/
 
- 
+<br/>
 
 _Overview of good data visualization principles with reference to ggplot2:_
 
 Data Visualization for Social Science: A practical introduction with R and ggplot2 - Kieran Healy   -  http://socviz.co/
 
- 
+<br/>
 
 _A very helpful blogpost containing many tips to making ggplot2 charts look beautiful:_
 
 Zev Ross blog post - http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-  cheatsheet-3/
 
- 
+<br/> 
 
 Makeover challenge for Week 4 (details to come).
 
