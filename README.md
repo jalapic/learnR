@@ -6,17 +6,18 @@ The materials are  designed to be used during class with instruction by Prof Cur
 
   
    
-   
+<br/>   
 
 
 ---    
  
 
-
+<br/>
 
 
 ## Weekly Material
 
+<br/>
 
 ### Week 1.  Introduction to R – Data Structures & Syntax
 
@@ -33,7 +34,7 @@ Skills Questionnaire: https://tinyurl.com/y98ctpbh
 
 Reading: Please read Chapter 3-6 of R. Cotton, Learning R: A Step-by-Step Function Guide to Data Analysis, O’Reilly, 2013. 
  
-
+<br/>
  
 
 ### Week 2. Data Carpentry
@@ -47,7 +48,7 @@ Please familiarize yourself  with the material. Don't worry if you get lost with
 After class, students will complete a data carpentry challenge to be submitted prior to class of week 3.
 
  
-
+<br/>
  
 
  
@@ -84,4 +85,4 @@ Zev Ross blog post - http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-
 
 Makeover challenge for Week 4 (details to come).
 
-
+<br/>
