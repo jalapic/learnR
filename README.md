@@ -83,6 +83,13 @@ Zev Ross blog post - http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-
 
 <br/> 
 
+_The ggplot2 help pages are also a great guide_
+
+The most up to date would be here: http://ggplot2.tidyverse.org/index.html
+
+<br/>
+
+
 
 **Makeover challenge for Week 4:**
 The goal of this exercise is to 'improve' a data visualization that is loose in the wild.  In particular, I want you to think about data visualization principles that we have discussed in class. What are the key messages to illustrate?  What is the most effective type of plot for these data?  How many/much color, annotation, text, lines or shapes should I include in the visualization?  Alternatively, you may decide that the original visualization did not highlight important findings and you think there is a more interesting story in the data to show.
