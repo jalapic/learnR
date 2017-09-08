@@ -101,6 +101,8 @@ Which dataset/visualization should I choose to makeover?
 - Alternatively, you may wish to find your own data.  You could retrieve this from anywhere e.g. newspapers, fivethirtyeight's data - https://github.com/fivethirtyeight/data , or published research in open-access journal articles.  
 
 If you need any advice on what to choose - please ask Dr Curley.  In week 4, students will present their visualization and design choices in class. Each person will give a quick 5-10 minute presentation on their choices.  To help you - here is a link to one makeover that I completed myself:  
+https://raw.githubusercontent.com/jalapic/learnR/master/exercises/curley_makeover.R
+
 
 <br/>
 
