@@ -89,7 +89,7 @@ The goal of this exercise is to 'improve' a data visualization that is loose in 
 
 Which dataset/visualization should I choose to makeover? 
 
--  The best resource for this makover challenge is the community website - "#MakeoverMonday - A weekly social data project".  If you go here: http://www.makeovermonday.co.uk/data/ you will find scores of raw datasets and links to articles that have included visualizations based on the dataset.  Please choose one that interests you and start creating new visualizations !   It may be that just one visualization is sufficient, or you may wish to make several based on the dataset of your choice.   
+-  The best resource for this makover challenge is the community website - "#MakeoverMonday - A weekly social data project".  If you go here: http://www.makeovermonday.co.uk/data/ you will find scores of raw datasets and links to articles that have included visualizations based on the dataset.  Please choose one that interests you and start creating new visualizations !   It may be that just one visualization is sufficient, or you may wish to make several based on the dataset of your choice.   (Note: many of these challenges were taken up by Tableau users who typically make more complex 'dashboard' style visualizations. Don't be discouraged by this. We are interested largely in creating simple, elegant charts similar to those we'd use for research output).
 
 - Alternatively, you may wish to find your own data.  You could retrieve this from anywhere e.g. newspapers, fivethirtyeight's data - https://github.com/fivethirtyeight/data , or published research in open-access journal articles.  
 
