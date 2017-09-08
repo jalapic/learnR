@@ -83,6 +83,24 @@ Zev Ross blog post - http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-
 
 <br/> 
 
-Makeover challenge for Week 4 (details to come).
+
+**Makeover challenge for Week 4:**
+The goal of this exercise is to 'improve' a data visualization that is loose in the wild.  In particular, I want you to think about data visualization principles that we have discussed in class. What are the key messages to illustrate?  What is the most effective type of plot for these data?  How many/much color, annotation, text, lines or shapes should I include in the visualization?  Alternatively, you may decide that the original visualization did not highlight important findings and you think there is a more interesting story in the data to show.
+
+Which dataset/visualization should I choose to makeover? 
+
+-  The best resource for this makover challenge is the community website - "#MakeoverMonday - A weekly social data project".  If you go here: http://www.makeovermonday.co.uk/data/ you will find scores of raw datasets and links to articles that have included visualizations based on the dataset.  Please choose one that interests you and start creating new visualizations !   It may be that just one visualization is sufficient, or you may wish to make several.   
+
+- Alternatively, you may wish to find your own data.  You could retrieve this from anywhere e.g. newspapers, fivethirtyeight's data - https://github.com/fivethirtyeight/data , or published research in open-access journal articles.  
+
+If you need any advice on what to choose - please ask Dr Curley.  In week 4, students will present their visualization and design choices in class. Each person will give a quick 5-10 minute presentation on their choices.  To help you - here is a link to one makeover that I completed myself:  
+
+<br/>
+
+
+
+
+
+
 
 <br/>
