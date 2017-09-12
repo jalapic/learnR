@@ -14,6 +14,9 @@ df <- mpg %>%
 df
 
 
+ggplot(df, aes(x = class, y = n)) + geom_col()
+
+
 ggplot(df, aes(x = class, y = n, fill = class)) + geom_col() + theme_minimal() 
 
 
