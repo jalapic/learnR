@@ -35,6 +35,25 @@ ggplot(babynames, aes(x=year)) + geom_bar(width=.7) + facet_wrap(~sex)
 
 
 
+## Same data can be presented in other ways:
+
+# density plot
+ggplot(babynames, aes(x=year)) + geom_density() + facet_wrap(~sex)
+
+# histograms
+ggplot(babynames, aes(x=year)) + geom_histogram() + facet_wrap(~sex)
+
+ggplot(babynames, aes(x=year)) + geom_histogram(binwidth = 2) + facet_wrap(~sex)
+
+ggplot(babynames, aes(x=year)) + geom_histogram(binwidth = 1) + facet_wrap(~sex)
+
+ggplot(babynames, aes(x=year)) + 
+  geom_histogram(binwidth = 1, color="darkseagreen", fill="white") + 
+  facet_wrap(~sex)
+
+
+
+
 #girls boys on same chart
 ggplot(since1950, aes(x=year, fill=sex)) + geom_bar()
 
@@ -54,6 +73,10 @@ ggplot(patricia, aes(x=year, y=n)) + geom_bar(stat='identity')
 ggplot(patricia, aes(x=year, y=n)) + geom_bar(stat='identity', color='black', lwd=.5, fill='gray33',width=.9)
 
 
+# Can also use geom_col() for short
+ggplot(patricia, aes(x=year, y=n)) + geom_col()
+
+ggplot(patricia, aes(x=year, y=n)) + geom_col(color='firebrick', lwd=.3, fill='mistyrose',width=.9)
 
 
 
