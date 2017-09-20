@@ -1,0 +1,45 @@
+## Exercise  - Learn an R Package.
+
+The purpose of this exercise is to learn a new skill by working through examples from a package help guide or vignette.  
+You can learn an entire package or just one function from one package.  
+What I want you to be able to do is to follow the worked examples and then adapt it for your own data. 
+
+The package you learn could be related to data visualization, data carpentry or statistics.  
+Feel free to choose what you are interested in.
+
+Please then write up your example ready to present to class next week. 
+If there is a topic you're particularly interested in, but don't know which package to go for - please email me.
+
+
+Goals:
+- you will learn how to use the help guides and vignettes
+- you will develop self-learning skills (much required for learning R)
+- we all get exposed to a wider variety of cool things that are possible in R
+- you will get an opportunity to present to class.
+
+
+
+
+#### Example Packages:
+
+dplyr (e.g. learn about joins)
+purrr
+formattable
+cowplot
+waffle
+broom
+lubridate
+igraph
+ggraph
+googlesheets
+jsonlite
+rvest
+zoo
+psych
+leaflet
+ggmap
+tidycensus
+tidytext
+stringr
+
+
