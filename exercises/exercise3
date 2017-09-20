@@ -25,6 +25,7 @@ Goals:
 dplyr (e.g. learn about joins)
 purrr
 formattable
+DT
 cowplot
 waffle
 broom
