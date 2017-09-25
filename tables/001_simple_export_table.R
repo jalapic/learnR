@@ -31,7 +31,7 @@ write.table(china, "china.csv", row.names=F)
 ### What options are there if you just want to save it as a PDF or word document ?
 
 
-# Remember the simplest is probably to use the 'rtf' package:
+# The simplest is probably to use the 'rtf' package:
 library(rtf)
 rtffile <- RTF("china.doc")  # this can be an .rtf or a .doc
 addParagraph(rtffile, "Life-Expectancy, Population and GDP in China:\n")
@@ -48,7 +48,7 @@ library(xtable)
 china.xt<-xtable(china)
 print.xtable(china.xt, type="html", file="filename.html")  #saved to your WD.
 
-# Open the generated HTML file in your browser (may I recommend Firefox)
+# Open the generated HTML file in your browser
 # Copy the table contents and paste them into your word processor
 # Might be a quick way of formatting tables in e.g. Word.  (I'm still not a fan of doing this, but you can)
 
