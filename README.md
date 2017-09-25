@@ -107,6 +107,18 @@ https://raw.githubusercontent.com/jalapic/learnR/master/exercises/curley_makeove
 <br/>
 
 
+### Week 5. Learning R Packages -  plus extra work on joins, strings and tables
+
+It's important to be able to self-learn when learning R  programming. This involves being able to work through blog posts, vignettes, help documentation.  Sometimes this can be very difficult and obscure, but the more we practice the easier we find learning new concepts.
+
+Also this week, we will go over the following:
+
+- joins in R:   how to join datasets using dplyr's join function.
+- string manipulation:  A brief primer on working with character strings in R.
+- tables:  making and exporting to word/pdf/RMarkdown tables - including output of models, raw data tables and summary statistics tables.
+
+<br>
+
 
 
 
