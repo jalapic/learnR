@@ -109,7 +109,7 @@ https://raw.githubusercontent.com/jalapic/learnR/master/exercises/curley_makeove
 
 ### Week 5. Learning R Packages -  plus extra work on joins, strings and tables
 
-It's important to be able to self-learn when learning R  programming. This involves being able to work through blog posts, vignettes, help documentation.  Sometimes this can be very difficult and obscure, but the more we practice the easier we find learning new concepts.
+It's important to be able to self-learn when learning R  programming. This involves being able to work through blog posts, vignettes, help documentation.  Sometimes this can be very difficult and obscure, but the more we practice the easier we find learning new concepts.  We shall go over this especially when discussing the following topics:
 
 Also this week, we will go over the following:
 
