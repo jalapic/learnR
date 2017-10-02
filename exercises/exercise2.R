@@ -10,6 +10,10 @@ femalepipe <- read.csv("https://raw.githubusercontent.com/jalapic/learnR/master/
 counted <- read_csv("https://raw.githubusercontent.com/jalapic/learnR/master/datasets/makeover/the-counted-2015.csv")
 internetuse<-read.csv("https://raw.githubusercontent.com/jalapic/learnR/master/datasets/makeover/internetuse.csv")
 march_madness <- read.csv("https://raw.githubusercontent.com/jalapic/learnR/master/datasets/makeover/NCAA%20Mens%20March%20Madness%20Historical%20Results.csv")
+d <- read.csv("https://raw.githubusercontent.com/jalapic/learnR/master/datasets/makeover/success.csv")
+Candidates <- read.csv("https://raw.githubusercontent.com/jalapic/learnR/master/datasets/makeover/CandidateSummaryAction.csv")
+anes<-read.csv("https://raw.githubusercontent.com/jalapic/learnR/master/datasets/makeover/anes.csv")
+
 
 
 
@@ -356,4 +360,118 @@ ggplot(data = subset(robots, percent_employ < 1), aes(x = percent_employ, y = pe
   scale_color_gradient(low = "blue", high = "red") +
   xlab("Percent of Population Employed in Industry") + ylab("Percent of Jobs at risk of Automation") +
   ggtitle("Scatterplot of Industries at Risk for Automation") 
+
+
+
+
+
+#######################################################################################################################################
+
+### 8.  Views of success by income 
+
+d$rate=as.numeric(sub("%","",d$rate))
+d$strata <- factor(d$strata, levels=c("Poor","Middle class","Rich people"),labels=c("Poor","Middle","Rich"))
+
+#create a category variable to facet plot by based on trends of each group.
+d$category <- ifelse(d$reason %in% c("abilities, talents","entreprenurial spirit, courage","hard work"),
+       "Rich", ifelse(d$reason %in% c("connections to the right people","cunning, cheating","presence of initial capital"),
+              "Poor", "Middle"))
+
+d$category<- factor(d$category, levels=c("Poor","Middle","Rich"),labels=c("Poor Highest","Middle Highest","Rich Highest"))
+d$reason<- factor(d$reason, levels=c("abilities, talents","entreprenurial spirit, courage","hard work","connections to the right people","cunning, cheating","presence of initial capital","fortune, good luck","good education, high qualification"),labels=c("abilities,\ntalents","entreprenurial spirit,\ncourage","hard work","connections to\nthe right people","cunning,\ncheating","presence of\ninitial capital","fortune,\n good luck","good education, high qualification"))
+
+#final plot
+ggplot(d,aes(x=strata,y=rate,group=reason,color=reason))+
+  geom_line(size=1.25)+
+  geom_point(size=2.5)+
+  facet_wrap(~category,ncol=3)+
+  theme_minimal()+
+  geom_text_repel(data=subset(d,strata=="Rich"),
+                  aes(label=reason),
+                  size=5.2,
+                  nudge_x =20,
+                  nudge_y = -.3,
+                  segment.color=NA)+
+  xlab("Social Strata")+
+  ylab("Percent Saying a Main Reason for Success")+
+  scale_color_manual(values=c("hotpink", "darkorchid1", "royalblue1","firebrick1","darkorange","gold1","deepskyblue","green1"))+
+  theme(legend.position="none",axis.text=element_text(size=15),
+        axis.title=element_text(size=15,face="bold"),
+        strip.text = element_text(size=15))
+
+
+#######################################################################################################################################
+
+
+### 9. Perceptions of white discrimination and feelings towards Trump. 
+
+#label race
+table(anes$race)
+anes$race <- c("White", "Black", "Latino", "Asian", "Native American", "Mixed", "Other", "Middle Eastern")[anes$race]
+table(anes$race)
+
+#label party affiliation
+anes$pid1d <- c("Democrat", "Republican", "Independent", "Something Else", NA,NA,NA,NA,"Skipped Question")[anes$pid1d]
+
+
+##Plot of feelings towards Trump s feelings towards African-Americans 
+ggplot (anes, aes(x=ftblack, y=fttrump, color = pid1d)) + geom_point(shape = 16, alpha=.8) +
+  scale_x_continuous (limits = c(0,100), breaks = c(0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100)) + 
+  scale_y_continuous (limits = c(0,100), breaks = c(0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100)) + 
+  ylab("Feelings towards Trump") + 
+  xlab("Feelings towards African-Americans") +
+  theme_minimal() + 
+  ggtitle("Racial Sentiments and Trump Support") + theme(plot.title = element_text(hjust =0.5)) +
+  labs(color = "Party Identification")+
+  facet_wrap(~pid1d)
+
+
+
+#####################################################################################################################################
+
+### 10. Candidate Election Contributions
+
+library(stringr)
+
+# But dollar signs and commas 
+Candidates$tot_con <- as.numeric(gsub('[$,]', '', Candidates$tot_con))
+Candidates$tot_dis <- as.numeric(gsub('[$,]', '', Candidates$tot_dis))
+Candidates$cas_on_han_clo_of_per <- as.numeric(gsub('[$,]', '', Candidates$cas_on_han_clo_of_per))
+Candidates$oth_com_con <- as.numeric(gsub('[$,]', '', Candidates$oth_com_con))
+Candidates$ind_con <- as.numeric(gsub('[$,]', '', Candidates$ind_con))
+
+
+# Shaping 
+House <- Candidates %>% filter(can_off=="H")
+HouseGOPandDem <- House %>% filter(can_par_aff=="REP" | can_par_aff=="DEM")
+values <- c("can_par_aff", "ind_con", "oth_com_con", "tot_con", "tot_dis", "cas_on_han_clo_of_per")
+Slim <- HouseGOPandDem[values]
+colnames(Slim)[1:6] <- c("Party","Individual contributions","PAC & other contributions","Total contributions",
+                         "Total disbursements","Cash on hand at end of period")
+
+
+# Gathering 
+Long <- Slim %>% gather("Individual contributions", "PAC & other contributions", "Total contributions", "Total disbursements", "Cash on hand at end of period", key="variable", value="amount")
+
+# Dividing by 1M
+Long$amount <- (Long$amount/(1000000))
+
+# Getting candidate counts
+nrow(HouseGOPandDem %>% filter(can_par_aff=="DEM")) #912
+nrow(HouseGOPandDem %>% filter(can_par_aff=="REP")) #517
+
+# Plotting 
+library(stringr)
+ggplot(Long, aes(x=variable, y=amount, fill=Party)) + 
+  geom_bar(stat="sum", position=position_dodge()) + 
+  labs(title="US campaign contributions and expenditures",
+       subtitle="2016 House races",
+       caption="Data from fec.gov",
+       x="",
+       y="Amount ($ millions)") +
+  theme_minimal() + 
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 10)) + 
+  scale_fill_manual(labels=c("912 Democrats", "517 Republicans"), values=c("#00C3C8", "#FF6A61"))
+
+
 
