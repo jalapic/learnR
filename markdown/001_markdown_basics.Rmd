@@ -1,0 +1,171 @@
+---
+title: "Markdown Basics"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Some R Markdown syntax
+
+Inserting line breaks into the document with either html tags or a slash followed by 2 spaces:
+
+<br><br>
+
+\   
+
+<br>
+
+Headers can be in different sizes:
+
+# Super Big
+
+## Big
+
+### Average
+
+#### Small
+
+##### Tiny
+
+###### I can't even see this.
+
+\   
+
+You can *italicize text* like this or  _like this_, you can **bold text** like that or __like this__. You can do **_combinations_** of these.  Sometimes you like to ~~strikethrough~~
+text.  Or even write things in superscript^like this^.  
+
+There are other syntaxy things you might want to write such as an endash -- , an emdash --- or an ellipsis ... . These are written using the following code `--`, `---`, `...`.
+
+
+You can write plain text in this space and it appears as text in your final document.  If you want to start a new paragraph make sure you leave two spaces at the end of your line.  
+
+This is a new paragraph.  
+
+
+
+\   
+
+You can write weblinks using the syntax: `[some text](weburl)` and it will look [like this ](https://www.youtube.com/watch?v=dQw4w9WgXcQ) in the text.
+
+
+\ 
+
+### Code in text
+
+It's simple to write some code in plain text by putting the text inside tildes like this `head(df)`.  Sometimes you want to write chuncks of text in code. That can be done using three tildes either side of the code chunk - ensure that `echo=T`.
+
+```{r, echo=T, eval=F}
+head(df)
+df$newvar <- c(1:5)
+```
+
+\  
+
+\  
+
+Text can also be written in a block quote.
+
+> _No act of kindness, no matter how small, is ever wasted_ - Aesop.
+
+\  
+
+You may also want to write bullet lists or numbered lists and you can do that like this:
+
+* unordered list
+* item 2
+ + sub-item 1
+ + sub-item 2
+
+1. ordered list
+2. item 2
+ + sub-item 1
+ + sub-item 2 
+ 
+ 
+
+ 
+ \  
+ 
+Embed images
+
+Embed videos
+
+
+\  
+
+You can add a linebreak with five dashes
+
+-----
+
+\  
+
+
+### Playing around with HTML and CSS
+
+\  
+
+With a bit of practice you can add HTML and CSS syling elements to a Markdown document.  This is because you are essentially creating raw HTML from the Markdown language via R.  So, let's say you wanted to change the color of some text, <p style="color:red;"> let's do that like this by adding some inline CSS/HTML </p>.
+
+\  
+
+
+#### Math
+
+It's possible to write inline equations by wrapping some math notation with `$` like this:  $A = \pi*r^{2}$  . That was written with the following code `$A = \pi*r^{2}$`. If you need guidance on how to write math notation - there are lots of [guides on the internet](http://csrgxtu.github.io/2015/03/20/Writing-Mathematic-Fomulars-in-Markdown/). [^1]
+
+
+Other examples are Greek letters: `$\Sigma \; \alpha \; \gamma$`: $\Sigma \; \alpha \; \gamma$
+
+Sums, products, and integrals: `$\sum_{i=1}^{\infty}x_i$` $\sum_{i=1}^{\infty}x_i$  
+
+With outer limits: `$\prod\limits_{i=1}^{\infty}\frac{1}{x_i}$` $\prod\limits_{i=1}^{\infty}\frac{1}{x_i}$
+
+Displayed as a block: `$$\int_{a}^{b}x^2dx$$` $$\int_{a}^{b}x^2dx$$
+
+
+There are several ways of writing matrices too:
+```
+$\begin{pmatrix}  
+1 & 2 & 3 \\ 
+4 & 5 & 6
+\end{pmatrix}$
+```
+$\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6
+\end{pmatrix}$ 
+
+Brackets:  
+```
+$\begin{bmatrix}  
+1 & 2 \\ 
+4 & 5   
+\end{bmatrix}$  
+```
+$\begin{bmatrix}
+1 & 2 \\
+4 & 5 
+\end{bmatrix}$  
+
+Very small:
+```
+$\left[\begin{smallmatrix}  
+1 & 2 \\
+4 & 5   
+\end{smallmatrix}\right]$  
+```
+$\left[\begin{smallmatrix}
+1 & 2 \\
+4 & 5 
+\end{smallmatrix}\right]$
+
+
+
+
+
+[^1]: You may have noticed the footnote above. Here it is. Some of these examples were taken from [here](https://rstudio-pubs-static.s3.amazonaws.com/256225_63ebef4029dd40ef8e3679f6cf200a5a.html#).
+
+
+

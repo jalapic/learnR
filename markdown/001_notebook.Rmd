@@ -1,0 +1,143 @@
+---
+title: "R Notebook"
+output:
+  html_notebook: default
+  html_document: default
+---
+
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+You will need version 1.0 or higher of RStudio.
+
+An R Notebook is an R Markdown document with chunks that can be executed independently and interactively, with output visible immediately beneath the input.
+
+
+
+```{r}
+head(iris)
+```
+
+\  
+
+Dataframes look tidier in the output than in the console and even better in the HTML output.
+
+\  
+
+Next try this simple plot:
+
+```{r}
+plot(cars)
+```
+
+\  
+
+This allows you to create reproducible plots.  You can choose to have the code shown or hidden depending upon who is reading the final output.
+
+\  
+
+### Inserting new chunks
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+
+
+-----
+
+### Splitting chunks
+
+In notebooks, it's best practice for each chunk to run one bit of the code as you go along.  However, sometimes you end up with too much in one chunk. For example:
+
+```{r}
+plot(cars)
+plot(x=runif(100), y=runif(100))
+```
+
+Here, you have to toggle between the two plots.  A quick way to separate into two would be to highlight the bit of code to put into a new chunk and then press Ctrl + Alt + I (OS X: Cmd + Option + I) and it will look like this:
+
+
+```{r}
+plot(cars)
+
+```
+
+```{r}
+plot(x=runif(100), y=runif(100))
+```
+
+\  
+
+
+### Executing Code
+
+You have different options for running code.
+
+- Use the  Run Chunk command, or Ctrl + Shift * Enter (OS X: Cmd + Shift + Enter) to run the current chunk.
+
+- Press Ctrl + Enter (OS X: Cmd + Enter) to run just the current statement. 
+
+- Use the Run All and Run Previous commands to run a batch of chunks.
+
+
+**Important - Remember to run previous chunks if your current chunk depends on code before it !**
+
+As chunks are executed you'll notice a green progress bar on the left. Lines of code which have been sent to R are marked with dark green; lines which have not yet been sent to R are marked with light green. This way you can see where errors may be.
+
+
+\  
+
+### Adding code inline of text
+
+It's also possible to write code within text.  Here is a function that will write what day of the week it is today - `r weekdays(Sys.time())`. A typical use case for this might be when you are writing that you ran a test and the p-value was `p=xxx` and you want the `xxx` to be the result of some output that you ran in a previous chunk. Just write "r code_goes_here".
+
+\  
+
+
+
+
+### Viewing edits in real-time
+
+One of the major advantages of R Notebooks is that you can see changes to one chart, table or math expression as you work with the code.  This means that you don't have to recreate the HTML output every time like you do in R Markdown.  Here's some example math expression - this kind of thing is very annoying to get write and R Notebooks make this easier:
+
+$$
+
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+
+$$
+
+\  
+
+### Tables
+
+Writing tables are not too tricky in R Notebooks.
+
+```{r results='asis', warning=FALSE, message=FALSE}
+library(babynames)
+library(tidyverse)
+
+babynames %>% filter(year>2000) %>%
+  group_by(name,sex) %>% summarise(total = sum(n)) %>%
+  arrange(-total) %>% head(100) -> popular_names
+
+knitr::kable(head(popular_names,10))
+```
+
+\  
+
+Lots of different table outputs are supported in R Notebooks. Here is the `DT` version:
+
+```{r results='asis', warning=FALSE, message=FALSE}
+library(DT)
+datatable(popular_names)
+```
+
+
+
+
+
+
+
