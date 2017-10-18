@@ -1,0 +1,175 @@
+---
+title: "Babynames Report"
+author: "James P. Curley"
+date: "October 17, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(babynames)
+```
+
+\  
+
+#### Project Overview
+
+In this project, I will analyze the data in the babynames package. The purpose of the tutorial is to provide examples of how to:
+
+- use RMarkdown
+- generate reproducible reports
+- work with R projects with good folder structures
+- source functions
+
+\  
+\  
+
+
+
+### Loading The Data
+
+```{r}
+head(babynames)
+```
+
+\  
+
+This is the standard babynames package.  It records the number of children born with each name in the USA for every year since 1880. 
+
+In total there are `r nrow(babynames)` observations. The years range from `r min(babynames$year)` to `r max(babynames$year)`.
+
+\ 
+\ 
+
+#### Sourcing Functions
+
+Often when writing reports you don't want your final report to be cluttered with code. It's often best to keep functions in a separate script. I have put the functions we'll use in this report in the `script` folder - one level down from the main folder.  We can source them like this:
+
+>`{r, code=readLines("../code/babynames_fns.R"), echo=FALSE}`
+
+```{r, code=readLines("../code/babynames_fns.R"), echo=FALSE}
+```
+
+\  
+
+What is going on here?  Well, we are reading in  the code in the R file `babynames_fns.R` using the function `readLines`. That is located in the `code` folder, which is one down from the main folder.  But, because we're working in the `manuscript` folder with this .Rmd file, we have to go up one level and then back down to the `code` folder.  That's why it looks this way: `../code`.   
+
+\ 
+
+We can test whether this worked by trying to run a plot:
+
+```{r, warning=FALSE, message=FALSE, fig.width=4, fig.height=4}
+name_plot("Skylar")
+
+```
+
+
+\  
+
+#### Reading in Data
+
+Often you want to read in data from external sources. Here, I'm importing a list of names that are named after flowers, classic movie actresses or Broadway shows.  We can just focus on the flower names.
+
+```{r}
+namesdf <- read.csv("../data/namelist.csv")
+flowers <- namesdf[namesdf$type=="flower",]
+as.character(flowers$name)
+```
+
+\  
+
+
+
+#### Let's look at the flower names
+
+```{r}
+babynames %>% filter(name %in% flowers$name) %>%
+  group_by(name) %>% summarise(total = sum(n)) %>%
+  arrange(total)
+```
+
+
+\  
+
+You can also place plots side by side like this adding `fig.show='hold'`:
+
+```{r,fig.width=3, fig.height=3,fig.show='hold'}
+
+name_plot("Myrtle") + ggtitle("Myrtle")
+name_plot("Poppy") + ggtitle("Poppy")
+name_plot("Daisy") + ggtitle("Daisy")
+```
+
+
+\  
+
+Daisy has a very interesting pattern - and here is a picture of a daisy: ![](../img/daisy.png){width=2%}
+
+
+\  
+
+
+\  
+
+####  Names that don't get used anymore
+
+Another idea for analysis of this dataset might be to identify names that were used prior to WW2 but have never been used since.  The following code creates two dataframes (pre + post) for each time period with the total number of names per era.  Then we join them back together to identify those only used prior to WW2.
+
+```{r}
+pre <-
+  babynames %>% 
+  filter(year<1945) %>%
+  group_by(name) %>%
+  summarize(total = sum(n)) %>%
+  rename(npre = total)
+
+```
+
+```{r}
+post <-
+  babynames %>%
+  filter(year>=1945) %>%
+  group_by(name) %>%
+  summarize(total = sum(n)) %>%
+  rename(npost = total)
+```
+
+```{r}
+head(pre)
+head(post)
+```
+
+```{r}
+ournames <- full_join(pre, post, by = "name")  #notice that some rows have "NA" - means they're missing (i.e. zeros)
+
+ournames %>%
+  filter(is.na(npost)==T) %>%
+  arrange(desc(npre)) -> ournames_l
+
+ournames_l
+```
+
+\ 
+
+
+Whatever happened to `r ournames_l$name[1]`, `r ournames_l$name[2]`, `r ournames_l$name[3]` or `r ournames_l$name[4]`?
+
+Let's look at the distribution of each of these in one graph....
+
+```{r, fig.width=4, fig.height=4}
+#extact top 10 vanished names as a character vector
+oldnames <- ournames_l[1:10,]$name
+
+oldnames1 <- babynames %>%
+  filter((name %in% oldnames ) == T)
+
+ggplot(oldnames1, aes(year, n)) +
+  geom_line(aes(group=name, color=name)) +
+  theme_minimal()
+
+```
+
+
+
+

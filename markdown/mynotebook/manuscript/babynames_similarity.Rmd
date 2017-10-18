@@ -1,0 +1,314 @@
+---
+title: "babynames_similarity"
+author: "James P. Curley"
+date: "October 17, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(babynames)
+library(magrittr)
+library(tsne)
+```
+
+
+```{r, code=readLines("../code/babynames_fns.R"), echo=FALSE}
+```
+
+
+
+In this analysis, we look at the similarity of name distributions over time.  It's clear from previous work on the babynames dataset that names gain and lose popularity over time.  Is it possible to classify how similar names are in their distributions?
+
+
+First lets convert the female  data from long format to wide format. This will allow us to perform the clustering analyses we need to do.
+
+```{r, warning=FALSE, message=FALSE}
+#reshape data
+babywideF <- 
+  babynames %>% 
+  filter(sex=="F") %>% 
+  select(name, year, n) %>%
+  spread(year, n, fill=0)
+
+babywideF <- as.data.frame(babywideF)
+rownames(babywideF) <- babywideF$name
+babywideF_names<- babywideF$name #save names
+babywideF$name<-NULL # remove name var
+
+babywideF[55111:55117,71:74]
+babywideF_names[55111:55117]
+```
+
+\
+
+
+
+
+\  
+
+Let's run a quick exploratory PCA to see roughly how many 'groups' of distributions there are:
+
+```{r}
+#principal components analysis
+resF.pca <- princomp(babywideF)
+plot(resF.pca)
+```
+
+\  
+
+But, for now, let's do a k-means clustering using 6 clusters.  The plot above seems to suggest that this will account for a lot of the variance. Because k-means clustering assign membership to groups, but these groups may change from run to run of the analysis, I'm setting seed to make the analysis reproducible as an example.
+
+```{r}
+###k-means clustering analysis
+set.seed(100)
+resF.k <- kmeans(babywideF, 6)
+table(resF.k$cluster)
+```
+
+\  
+
+It's very clear from the above that most names fall into group 2.  This group contains many names that are super rare in the data.  Some  random examples of these names would be:  `r names(resF.k$cluster[resF.k$cluster==2])[2221]`, `r names(resF.k$cluster[resF.k$cluster==2])[23801]`, and `r names(resF.k$cluster[resF.k$cluster==2])[59444]`.  
+
+We can look at the other groups too. Here are three randomish names from each:
+
+- Group 1: `r names(resF.k$cluster[resF.k$cluster==1])[2]`, `r names(resF.k$cluster[resF.k$cluster==1])[7]`, `r names(resF.k$cluster[resF.k$cluster==1])[11]`
+- Group 3: `r names(resF.k$cluster[resF.k$cluster==3])[2]`, `r names(resF.k$cluster[resF.k$cluster==3])[17]`, `r names(resF.k$cluster[resF.k$cluster==3])[32]`
+- Group 4: `r names(resF.k$cluster[resF.k$cluster==4])[2]`, `r names(resF.k$cluster[resF.k$cluster==4])[11]`, `r names(resF.k$cluster[resF.k$cluster==4])[18]`
+- Group 5: `r names(resF.k$cluster[resF.k$cluster==5])[2]`, `r names(resF.k$cluster[resF.k$cluster==5])[42]`, `r names(resF.k$cluster[resF.k$cluster==5])[62]`
+- Group 6: `r names(resF.k$cluster[resF.k$cluster==6])[2]`, `r names(resF.k$cluster[resF.k$cluster==6])[72]`, `r names(resF.k$cluster[resF.k$cluster==6])[152]`
+
+\  
+
+\  
+
+Let's look at what the distributions for each group look like.
+
+```{r,fig.width=3, fig.height=3,fig.show='hold'}
+
+babynames %>%
+  filter(sex=="F" & name %in% names(resF.k$cluster[resF.k$cluster==1])) %>%
+  ggplot(aes(year, n, group=name)) +
+  geom_line() +
+  theme_minimal() +
+  ggtitle("Cluster 1")
+
+babynames %>%
+  filter(sex=="F" & name %in% names(resF.k$cluster[resF.k$cluster==3])) %>%
+  ggplot(aes(year, n, group=name)) +
+  geom_line() +
+  theme_minimal() +
+  ggtitle("Cluster 3")
+
+babynames %>%
+  filter(sex=="F" & name %in% names(resF.k$cluster[resF.k$cluster==4])) %>%
+  ggplot(aes(year, n, group=name)) +
+  geom_line() +
+  theme_minimal() +
+  ggtitle("Cluster 4")
+
+babynames %>%
+  filter(sex=="F" & name %in% names(resF.k$cluster[resF.k$cluster==5])) %>%
+  ggplot(aes(year, n, group=name)) +
+  geom_line() +
+  theme_minimal() +
+  ggtitle("Cluster 5")
+
+babynames %>%
+  filter(sex=="F" & name %in% names(resF.k$cluster[resF.k$cluster==6])) %>%
+  ggplot(aes(year, n, group=name)) +
+  geom_line() +
+  theme_minimal() +
+  ggtitle("Cluster 6")
+
+```
+
+
+\  
+
+We can make some generalizations from these plots.  Cluster 1 appears to be super popular names peaking during the baby-boomer period. These names are: `r names(resF.k$cluster[resF.k$cluster==1])`.  One of these, Mary, doesn't seem to fit the same distribution as the others precisely as it was also highly popular pre WW2, but because of the number of children called Mary it is put into this group.
+
+After looking at these distributions, I think we could clean this up a little and redo  the k-means clustering after excluding those names from cluster 2. We can do that like this:
+
+```{r}
+group1x <- names(resF.k$cluster[resF.k$cluster==2])
+babywideF1 <- babywideF %>% mutate(id = rownames(.)) %>% filter(!id %in% group1x) %>% as.data.frame()
+rownames(babywideF1) <- babywideF1$id 
+babywideF1$id <- NULL
+
+### principal components analysis - females
+resF1.pca <- princomp(babywideF1)
+plot(resF1.pca)
+```
+
+\  
+
+This time it seems reasonable to pick 7 clusters.
+
+```{r}
+###k-means clustering analysis
+set.seed(10)
+resF1.k <- kmeans(babywideF1, 7)
+table(resF1.k$cluster)
+
+names(resF1.k$cluster[resF1.k$cluster==4])
+
+```
+
+\  
+
+This time, it identifies Mary successfully as being one of a kind.  Let's plot the distributions:
+
+
+```{r,fig.width=3, fig.height=3,fig.show='hold'}
+
+babynames %>%
+  filter(sex=="F" & name %in% names(resF1.k$cluster[resF1.k$cluster==1])) %>%
+  ggplot(aes(year, n, group=name)) +
+  geom_line() +
+  theme_minimal() +
+  ggtitle("Cluster 1")
+
+babynames %>%
+  filter(sex=="F" & name %in% names(resF1.k$cluster[resF1.k$cluster==2])) %>%
+  ggplot(aes(year, n, group=name)) +
+  geom_line() +
+  theme_minimal() +
+  ggtitle("Cluster 2")
+
+
+babynames %>%
+  filter(sex=="F" & name %in% names(resF1.k$cluster[resF1.k$cluster==3])) %>%
+  ggplot(aes(year, n, group=name)) +
+  geom_line() +
+  theme_minimal() +
+  ggtitle("Cluster 3")
+
+babynames %>%
+  filter(sex=="F" & name %in% names(resF1.k$cluster[resF1.k$cluster==4])) %>%
+  ggplot(aes(year, n, group=name)) +
+  geom_line() +
+  theme_minimal() +
+  ggtitle("Cluster 4")
+
+babynames %>%
+  filter(sex=="F" & name %in% names(resF1.k$cluster[resF1.k$cluster==5])) %>%
+  ggplot(aes(year, n, group=name)) +
+  geom_line() +
+  theme_minimal() +
+  ggtitle("Cluster 5")
+
+babynames %>%
+  filter(sex=="F" & name %in% names(resF1.k$cluster[resF1.k$cluster==6])) %>%
+  ggplot(aes(year, n, group=name)) +
+  geom_line() +
+  theme_minimal() +
+  ggtitle("Cluster 6")
+
+babynames %>%
+  filter(sex=="F" & name %in% names(resF1.k$cluster[resF1.k$cluster==7])) %>%
+  ggplot(aes(year, n, group=name)) +
+  geom_line() +
+  theme_minimal() +
+  ggtitle("Cluster 7")
+
+```
+
+\  
+
+A summary of the following would be:
+
+**Group 1 - Super popular baby-boomers **  
+`r names(resF1.k$cluster[resF1.k$cluster==1])`
+
+\  
+
+**Group 2 - Pre WW2**  
+`r names(resF1.k$cluster[resF1.k$cluster==2])`  
+
+\  
+
+**Group 3 - 2000s**  
+`r names(resF1.k$cluster[resF1.k$cluster==3])`  
+
+\  
+
+**Group 4 - Mary**  
+`r names(resF1.k$cluster[resF1.k$cluster==4])`  
+
+\  
+
+**Group 5 - 1990s**  
+`r names(resF1.k$cluster[resF1.k$cluster==5])`  
+
+\  
+
+**Group 6 - 1980s**  
+`r names(resF1.k$cluster[resF1.k$cluster==6])`  
+
+\  
+
+**Group 7 - The rest - mostly popular in the 60s !**  
+`r names(resF1.k$cluster[resF1.k$cluster==7])`  
+
+\  
+
+\  
+
+
+####  T-distributed Stochastic Neighbor Embedding. 
+
+A method of visualizing similarity/disimilarity in 2D space that I really like is TSNE. We can do that like this:
+
+```{r, message=F,warning=FALSE,fig.width=7, fig.height=7}
+
+#create some objects to make making a namesdf simpler
+group1<-names(resF1.k$cluster[resF1.k$cluster==1])
+group2<-names(resF1.k$cluster[resF1.k$cluster==2])
+group3<-names(resF1.k$cluster[resF1.k$cluster==3])
+group5<-names(resF1.k$cluster[resF1.k$cluster==5])
+group6<-names(resF1.k$cluster[resF1.k$cluster==6])
+group7<-names(resF1.k$cluster[resF1.k$cluster==7])
+
+#remove group 7
+babywideF2 <- babywideF1[!rownames(babywideF1) %in%  group7,]
+D <- dist(babywideF2)  #create distance object
+
+# creating dataframe for plotting colors and text on final plot
+namesdf <- data.frame(name = c(group1, group2, group3, "Mary", group5, group6), 
+                      group = c(rep(1, length(group1)), rep(2, length(group2)), rep(3, length(group3)), rep(4, 1),
+                                rep(5, length(group5)), rep(6, length(group6)))
+)
+
+namesdf %<>% arrange(name) #names in correct order to match rownames of babywideF1 
+
+colors = rainbow(6)
+names(colors) = unique(namesdf$group)
+
+#define function used in plotting
+ecb = function(x,y){ plot(x,t='n'); text(x,labels=rownames(babywideF2), col=colors[namesdf$group], cex=.5) }
+
+#plot
+tsne_D = tsne(D, k=2,  epoch_callback = ecb, perplexity=50)
+
+```
+
+
+\  
+
+From this, I find it interesting that Grace, Ella, Julia, Victoria are towards the boundary with older names. Also, Anna, a pre-WW2 name is moving away from its group. This made me wonder if these may be the names showing the 1920s and 1990s/2000s bumps.
+
+\  
+
+```{r,fig.width=3, fig.height=3,fig.show='hold'}
+
+name_plot("Grace") + ggtitle("Grace")
+name_plot("Ella") + ggtitle("Ella")
+name_plot("Julia") + ggtitle("Julia")
+name_plot("Victoria") + ggtitle("Victoria")
+name_plot("Anna") + ggtitle("Anna")
+```
+
+\  
+
