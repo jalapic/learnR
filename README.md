@@ -120,6 +120,62 @@ Also this week, we will go over the following:
 <br>
 
 
+### Weeks 6-7. Group Data Carpentry & Visualization Project
+
+The goals of these two weeks are to:
+
+- increase your knowledge of working with large, messy datasets in R
+- improve data carpentry skills
+- develop the ability to discern key information and narratives from raw data
+- generate publication quality data visualizations
+- produce reproducible data analysis
+- work with others in a group to share skills and tasks collaboratively
+
+Before the first class:  Have a look at the datasets below and let me know which you would have a preference on working on - this will help with assigning groups.
+
+
+In the first class, groups of 2-3 will be assigned.  The first step will be to explore the different datasets and become familiar with data issues.  
+Secondly, begin to explore and generate potential research questiosns. This step usually involves producing exploratory visualizations.
+You may also wish to bring in related data from other datasets to help with your analysis.
+
+Throughout this class, you can ask me questions if you get stuck. This will provide an opportunity for me to identify which tasks/skills we need to discuss in more detail.
+
+The second class will provide an opportunity to finalize visualizations and code.  This should be reproducible such that anybody can follow your analysis. 
+Please post the finished work as a Gist.  You are encouraged to work on the project during the week too !
+
+
+*Possible Datasets for Group Projects*
+
+* American National Election Studies Datasets
+   http://www.electionstudies.org/studypages/download/datacenter_all_NoData.php
+   also see here for an example:  https://raw.githubusercontent.com/jalapic/learnR/master/datasets/makeover/anes.csv
+   
+* Federal Election Commission Data:  
+    https://www.fec.gov
+    https://www.fec.gov/data/
+    http://classic.fec.gov/finance/disclosure/ftpdet.shtml
+    http://classic.fec.gov/portal/download.shtml 
+    see here for an example: https://raw.githubusercontent.com/jalapic/learnR/master/datasets/makeover/CandidateSummaryAction.csv
+
+* Kaggle has many large datasets - https://www.kaggle.com/datasets  - we will view these
+
+* One of your own choice (e.g. large research project from your lab).
+
+<br>
+
+
+### Weeks 8-9. Producing Reproducible Reports with RNotebooks, RMarkdown and Project Management
+
+The aims of these two weeks are to:
+
+- learn RMarkdown syntax
+- understand how to make reproducible reports with RNotebooks & RMarkodwn
+- learn how to customize report outputs in RMarkdown with CSS/HTML/chunk options
+- recognize the significance of using R Projects for maintaing good workflow in our research
+- know how to write a journal paper completely with script in RStudio
+- learn how to make slides using RStudio
+
+Exercise:  The exercise for this class will be due before week 9.   This exercise will require students to produce their own reproducible report using RNotebooks or RMarkdown.
 
 
 
