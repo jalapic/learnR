@@ -1,0 +1,29 @@
+### Exercise 5 - Reproducible Reports.
+
+The aim of this exercise is to generate your own reproducible report using R.  Please use either RMarkdown or RNotebook (either is fine).
+
+I would like you to generate a reproducible report based on any dataset you wish.  This could be from your own research, a dataset available online, or a dataset from an R package.
+
+The report should include:
+
+- your name (author) and the date in the YAML
+- Introduction (text explaining the rationale for choosing the dataset and what you plan to investigate).
+- code in R chunks - code you use to process the data and analyze the data in R chunks.
+- Data Visualizations:  at least one plot by itself, and at least two plots side-by-side in the same row.
+- Table - at least one table showing either raw data or summary data.  The table could be in any format we've used before.
+- Summary - a summary paragraph detailing what the plots show and why it's interesting.  
+(Please also use text in between code chunks too to describe what you are doing).
+
+Within the RMarkdown/RNotebook file, please include at least 5 of the following using Markdown syntax:
+
+- different header sizes
+- a bullet list of text
+- bolded or underlined text
+- insert an image
+- insert a web link
+- a mathematical expression
+- an inline piece of R code within text that returns an output.
+- different font colors using HTML/CSS
+ 
+ 
+ All of the above are included in the examples I went through in the last class.  Email me if you need any help on them.
