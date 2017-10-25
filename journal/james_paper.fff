@@ -1,0 +1,24 @@
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+{\centering \includegraphics{james_paper_files/figure-latex/fig1-1}
+
+}
+
+\caption{The S129 strain decreases its wheel-running over successive days.}\label{fig:fig1}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+{\centering \includegraphics{james_paper_files/figure-latex/fig2-1}
+
+}
+
+\caption{Output of statistical model}\label{fig:fig2}
+\end{figure*}
+\efloatseparator
+ 

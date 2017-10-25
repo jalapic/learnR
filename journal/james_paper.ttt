@@ -1,0 +1,46 @@
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[tbp]
+\begin{center}
+\begin{threeparttable}
+\caption{\label{tab:table1}Summary statistics of wheel running by Strain}
+\begin{tabular}{lllll}
+\toprule
+strain & \multicolumn{1}{c}{Day1 Mean} & \multicolumn{1}{c}{Day2 Mean} & \multicolumn{1}{c}{Day3 Mean} & \multicolumn{1}{c}{Day4 Mean}\\
+\midrule
+B6 & 8,694.82 & 7,243.21 & 9,857.32 & 11,191.86\\
+F1-129B6 & 10,088.11 & 8,394.89 & 9,949.02 & 12,281.45\\
+F1-B6129 & 9,115.03 & 9,089.03 & 10,519.40 & 13,445.00\\
+S129 & 8,936.41 & 4,611.03 & 3,668.91 & 4,364.08\\
+Swiss & 7,148.19 & 8,006.96 & 9,777.04 & 11,641.31\\
+\bottomrule
+\end{tabular}
+\end{threeparttable}
+\end{center}
+\end{table*}
+\efloatseparator
+ 
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[tbp]
+\begin{center}
+\begin{threeparttable}
+\caption{\label{tab:table2}Results of Statistical Model}
+\begin{tabular}{lllll}
+\toprule
+term & \multicolumn{1}{c}{estimate} & \multicolumn{1}{c}{std.error} & \multicolumn{1}{c}{statistic} & \multicolumn{1}{c}{p.value}\\
+\midrule
+(Intercept) & 7,526.78 & 1,031.26 & 7.30 & 0.00\\
+strainF1-129B6 & 905.55 & 865.19 & 1.05 & 0.30\\
+strainF1-B6129 & 1,281.11 & 927.67 & 1.38 & 0.17\\
+strainS129 & -3,749.90 & 946.50 & -3.96 & 0.00\\
+strainSwiss & -96.72 & 957.94 & -0.10 & 0.92\\
+day & 658.24 & 251.52 & 2.62 & 0.01\\
+wheel & 17.97 & 113.44 & 0.16 & 0.87\\
+\bottomrule
+\end{tabular}
+\end{threeparttable}
+\end{center}
+\end{table*}
+\efloatseparator
+ 

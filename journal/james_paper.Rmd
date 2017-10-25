@@ -1,0 +1,167 @@
+---
+title             : "Are there strain differences in wheel-running in mice"
+shorttitle        : "Wheel-running in mice"
+
+author: 
+  - name          : "George Washington"
+    affiliation   : "1"
+    corresponding : yes    # Define only one corresponding author
+    address       : "9001 Saturn Lane, Planet Jupiter, 10044"
+    email         : "washington@email.com"
+  - name          : "Jane Doe"
+    affiliation   : "1,2"
+
+affiliation:
+  - id            : "1"
+    institution   : "Jupiter Research University"
+  - id            : "2"
+    institution   : "Institue of Neuroscience, University of Life"
+
+
+abstract: |
+  In this study we found that strain differences in wheel-running existed in male mice.
+  We also observed that all strains showed high levels of wheel running on day 1, the
+  129S strain showed rapid habituation to wheel-running and did not continue to run in
+  the wheels to such a high level by day 4.
+  
+keywords          : "wheel-running, mice, strains, behavior"
+wordcount         : "X"
+
+bibliography      : ["references.bib"]
+
+figsintext        : no
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+lineno            : yes
+
+lang              : "english"
+class             : "man"
+output            : papaja::apa6_pdf
+---
+
+```{r load_packages, include = FALSE}
+
+library(knitr)
+opts_chunk$set(
+    fig.align = "center"
+)
+
+library("papaja")
+library("tidyverse")
+library("broom")
+wheels <- read.csv("https://raw.githubusercontent.com/jalapic/learnR/master/datasets/wheels.csv", stringsAsFactors = F)
+```
+
+```{r analysis_preferences}
+# Seed for random number generation
+set.seed(42)
+```
+
+
+# Introduction
+
+There is a long literature of mice running in wheels [@swallow1998artificial; @koteja1999behaviour].  I'm not going to talk about that here in this introduction.  I'm also not going to talk about the different strains of mice that exist [@beck2000genealogies; @crawley1997behavioral].  
+
+# Methods
+We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study.
+
+## Data analysis
+We used `r cite_r("references.bib")` for all our analyses.
+
+\newpage
+
+# Results
+
+```{r table1, results='asis', message=F, warning=F}
+
+wheels.summary <-wheels %>% group_by(strain) %>% 
+  summarise("Day1 Mean" = mean(day1, na.rm=T),
+            "Day2 Mean" = mean(day2, na.rm=T),
+            "Day3 Mean" = mean(day3, na.rm=T),
+            "Day4 Mean" = mean(day4, na.rm=T))
+
+
+# Print table in APA format
+papaja::apa_table(wheels.summary, caption = "Summary statistics of wheel running by Strain")
+
+```
+
+```{r fig1, fig.cap = "The S129 strain decreases its wheel-running over successive days."}
+
+wheels %>% gather(day,value,2:5) %>% group_by(strain,day) %>% summarise(meanx = mean(value,na.rm=T), sdx=sd(value,na.rm=T), n=n(), se=sdx/sqrt(n))->wheelsvals
+
+pd <- position_dodge(0.1) # move them .05 to the left and right
+
+ggplot(wheelsvals, aes(x=day, y=meanx, group=strain,colour=strain)) + 
+    geom_errorbar(aes(ymin=meanx-se, ymax=meanx+se), width=.1, position=pd) +
+    geom_line(position=pd,lwd=.5) +
+    geom_point(position=pd) +
+  scale_color_manual(values=c("black", "red", "orange", "green", "dodgerblue")) +
+  theme_minimal() +
+  ggtitle("Figure 1. Strain differences in wheel-running in mice.")
+
+
+```
+
+
+
+```{r table2, results='asis'}
+#broom table output
+wheels1 <- wheels %>% gather(day,value,2:5)
+wheels1$day <- as.numeric(gsub("day", "", wheels1$day))
+fit <- lm(value ~ strain +  day + wheel, data=wheels1)
+x <- tidy(fit) 
+x[,2:4] <-round(x[,2:4],2)
+x[,5]<-round(x[,5],3)
+
+#knitr::kable(x)
+papaja::apa_table(x, caption = "Results of Statistical Model")
+
+```
+
+```{r fig2, fig.cap = "Output of statistical model"}
+td <- tidy(fit, conf.int = TRUE)
+td1 <- ggplot(td, aes(estimate, term, color = term)) +
+    geom_point() +
+    geom_errorbarh(aes(xmin = conf.low, xmax = conf.high)) 
+td1+ ggtitle("Figure 2. Coefficients and confidence intervals")
+
+```
+
+
+We found that all mice ran in the wheels to a high level (Table 1)\@ref(tab:table1). The most revolutions run by any mouse on any day was `r wheels %>% gather(day,value,2:5) %>% .$value %>% max(., na.rm=T)`.  Four out of five strains increased their wheel-running for each of the  successive three days.  However, S129 mice decreased their wheel running over successive days  (Figure 1) \@ref(fig:fig1).  
+
+Although there was a clear effect of strain and day on wheel-running, we did not find any evidence that the wheel used was associated with differences in the number of revolutions made (Figure 2 \@ref(fig:fig2) & Table 2 \@ref(tab:table2) ).
+
+
+
+# Discussion
+
+I have said nearly everything I have to say about this study[^thatsall].  I do have one more thing to add though [^extraadd].
+
+[^thatsall]: If you're still intrigued by wheel-running more info is here: <http://www.sciencedirect.com/science/article/pii/S0003347299912708>.
+[^extraadd]: Actually I don't.
+
+
+
+# Author contributions
+
+GW and JD designed the experiment and undertook data analysis. GW performed the experiments. JD drafted the manuscript. GW and JD wrote and approved the final version of the manuscript for submission.
+
+
+# Acknowledgments
+
+We thank all scientists.
+
+
+
+\newpage
+
+# References
+```{r create_r-references}
+r_refs(file = "references.bib")
+```
+
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
