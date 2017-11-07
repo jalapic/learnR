@@ -194,4 +194,10 @@ In class each student will look up five research articles from Psychology journa
 
 In this class we shall discuss the merits and benefits of version control.  We will discuss how using Git and GitHub can facilitate open science research, and how we can manage our projects more effectively.
 
+We shall follow the tutorial that I wrote in this paper:
+
+Vuorre M & Curley JP, 2018, Curating Research Assets: A Tutorial on the Git Version Control System, Advances in Methods and Practices in Psychological Science.
+
+It can be accessed in preprint form here - https://mvuorre.github.io/pdf/2017-Vuorre-Curley.pdf 
+
 <br>
