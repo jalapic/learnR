@@ -181,3 +181,17 @@ Exercise:  The exercise for this class will be due before week 9.   This exercis
 
 
 <br/>
+
+
+
+### Week 10: Reproducibility Exercise
+
+In class each student will look up five research articles from Psychology journals in 2017.  For each, record whether data and/or code are provided along with the manuscript.  We will then attempt to reproduce the analyses of each paper.  We shall also discuss the merits of reproducibility and some of the ethical and practical issues surrounding open science.
+
+<br>
+
+### Week 11: Version Control using Git
+
+In this class we shall discuss the merits and benefits of version control.  We will discuss how using Git and GitHub can facilitate open science research, and how we can manage our projects more effectively.
+
+<br>
