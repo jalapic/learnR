@@ -1,6 +1,6 @@
 # learnR
 
-This repo contains materials related to teaching _"R Programming for Behavioral Scientists"_ - taught by Prof Curley - UT Austin, Psychology, Fall 2017.
+This repo contains materials related to teaching _"R Programming for Behavioral Scientists"_ - taught by Prof Curley - UT Austin, Psychology, Fall 2018.
 
 The materials are  designed to be used during class with instruction by Prof Curley, but can be read alone also.
 
@@ -37,15 +37,23 @@ Reading: Please read Chapter 3-6 of R. Cotton, Learning R: A Step-by-Step Functi
 <br/>
  
 
-### Week 2. Data Carpentry
+### Week 2-3. Data Carpentry
 
-Aim: Students will learn how to import and export data from RStudio. Students will learn how to summarize data and how to reorganize and work flexibly with raw data.
+Aim: Students will learn how to import and export data from RStudio. Students will learn how to summarize data and how to reorganize and work flexibly with raw data. Students will learn how to write code for visualizing and analyzing data that can be shared with other collaborators or users. Students will learn how to use RMarkdown and RNotebooks for producing standalone PDF or web-hosted data analysis and visualizations and how to use these methods for demonstrating their workflow to other users. 
+
+In class: The instructor will lead a discussion about worked examples and troubleshoot questions. After class, students will complete a data carpentry exercise to be submitted in week 3.
+
+
 
 Reading: Chapter 5, 11 & 12 of G. Grolemund & H.Wickham, R for Data Science, O’Reilly, 2016. You can access this book online for free here:   http://r4ds.had.co.nz/
 
+Chapters 27,29,30 of G. Grolemund & H.Wickham, R for Data Science, O’Reilly, 2016. (for Markdown stuff).
+
+
+
 Please familiarize yourself  with the material. Don't worry if you get lost with the code - we will work through it together in class.  I would like you to get a sense of the purpose of being able to transform data in different ways using code.
 
-After class, students will complete a data carpentry challenge to be submitted prior to class of week 3.
+After class, students will complete a data carpentry challenge to be submitted week 3.
 
  
 <br/>
@@ -53,7 +61,7 @@ After class, students will complete a data carpentry challenge to be submitted p
 
  
 
-### Weeks 3-4   Data Visualization I & II
+### Weeks 4-5   Data Visualization I & II
 
 Aim: Students will learn how to visualize and explore data using the ggplot2 package. Students will become familiar with how to choose the most appropriate data visualization for different data types by adjust aesthetics and chart types. Students will learn Leland Wilkinson’s grammar of graphics approach to data visualization.
 
@@ -77,6 +85,11 @@ Data Visualization for Social Science: A practical introduction with R and ggplo
 
 <br/>
 
+_A free online book in the same vein:_
+
+Fundamentals of Data Visualization - Claus Wilkie - https://serialmentor.com/dataviz/index.html
+
+
 _A very helpful blogpost containing many tips to making ggplot2 charts look beautiful:_
 
 Zev Ross blog post - http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-  cheatsheet-3/
@@ -91,7 +104,7 @@ The most up to date would be here: http://ggplot2.tidyverse.org/index.html
 
 
 
-**Makeover challenge for Week 4:**
+**Makeover challenge for Week 5:**
 The goal of this exercise is to 'improve' a data visualization that is loose in the wild.  In particular, I want you to think about data visualization principles that we have discussed in class. What are the key messages to illustrate?  What is the most effective type of plot for these data?  How many/much color, annotation, text, lines or shapes should I include in the visualization?  Alternatively, you may decide that the original visualization did not highlight important findings and you think there is a more interesting story in the data to show.
 
 Which dataset/visualization should I choose to makeover? 
@@ -107,20 +120,20 @@ https://raw.githubusercontent.com/jalapic/learnR/master/exercises/curley_makeove
 <br/>
 
 
-### Week 5. Learning R Packages -  plus extra work on joins, strings and tables
 
-It's important to be able to self-learn when learning R  programming. This involves being able to work through blog posts, vignettes, help documentation.  Sometimes this can be very difficult and obscure, but the more we practice the easier we find learning new concepts.  We shall go over this especially when discussing the following topics:
+### Week 6.  Basic statistics with R
 
-Also this week, we will go over the following:
+Aim: To familiarize students with how to conduct basic statistical tests in R.  We shall discuss (depending upon class need) testing normality and variances of distributions, paired and unpaired T-tests, One-way Analysis of Variance, Two-way Analysis of Variance, Pearson and Spearman Correlations, Linear Regression, Logistic Regression and generalized Linear Models	
 
-- joins in R:   how to join datasets using dplyr's join function.
-- string manipulation:  A brief primer on working with character strings in R.
-- tables:  making and exporting to word/pdf/RMarkdown tables - including output of models, raw data tables and summary statistics tables.
+Reading:  A useful reference resource for statistics with R is:
+Field, A. Miles, J. Fields Z., 2012 Discovering Statistics Using R. Sage Publications.
+It’s a very big book, so I don’t expect you to read it for class – but if you need additional information, I recommend this book.
 
 <br>
 
 
-### Weeks 6-7. Group Data Carpentry & Visualization Project
+
+### Weeks 7-8. Group Data Carpentry & Visualization Project
 
 The goals of these two weeks are to:
 
@@ -164,19 +177,12 @@ Please post the finished work as a Gist.  You are encouraged to work on the proj
 <br>
 
 
-### Weeks 8-9. Producing Reproducible Reports with RNotebooks, RMarkdown and Project Management
 
-The aims of these two weeks are to:
+### Week 9.  Learn an R package
 
-- learn RMarkdown syntax
-- understand how to make reproducible reports with RNotebooks & RMarkodwn
-- learn how to customize report outputs in RMarkdown with CSS/HTML/chunk options
-- recognize the significance of using R Projects for maintaing good workflow in our research
-- know how to write a journal paper completely with script in RStudio
-- learn how to make slides using RStudio
+Aim: An important aspect of learning to code is learning how to independently acquire new skills and to troubleshoot problems. Students can independently learn skills from blog posts, video tutorials, Q&A sites such as StackOverflow, package vignettes etc. Students will be set the goal of learning an R package previously unfamiliar to themselves and presenting some analyses and visualizations based on this package to the class. Students will also develop skills in orally communicating their newly acquired skills to other students.
 
-Exercise:  The exercise for this class will be due before week 9.   This exercise will require students to produce their own reproducible report using RNotebooks or RMarkdown.
-
+Before class:  Students will select the R package either from a list provided by the instructor, or with the instructor’s approval. Students are expected to complete their analysis and visualizations and upload them to GitHub prior to class.  In class, each student will present their analysis and visualization to the class, describing what they learnt, how they found the information to learn the package, what problems they encountered and how they overcame them.
 
 
 
@@ -186,7 +192,20 @@ Exercise:  The exercise for this class will be due before week 9.   This exercis
 
 ### Week 10: Reproducibility Exercise
 
-In class each student will look up five research articles from Psychology journals in 2017.  For each, record whether data and/or code are provided along with the manuscript.  We will then attempt to reproduce the analyses of each paper.  We shall also discuss the merits of reproducibility and some of the ethical and practical issues surrounding open science.
+Aim: Students will become familiar with the critical concept of open and transparent data analysis. They will understand why their code needs to be reproducible and that this is for the benefit of themselves, their co-workers or collaborators, reviewers and audience. 
+
+Before each class:  . Students will also choose a recently published academic paper or piece of research from the internet that they will attempt to reproduce the analysis for. Students can choose from a list produced by the instructor or a piece of research of their own choice with the instructor’s approval.  Before the second class, students will attempt to reproduce their chosen paper’s analyses and visualizations.
+
+In class: The instructor will lead a discussion about the students current views about reproducibility in data science and academia. Students will present whether it was possible or not to reproduce the published findings in academic research papers and the implications of this exercise. 
+
+Reading: 
+Munafo MR et al., 2017, A manifesto for reproducible science, Nature Human Behaviour 1: 0021. doi:10.1038/s41562-016-0021
+Markowetz F, 2015, Five selfish reasons to work reproducibly, Genome Biology 16:274. 
+doi: 10.1186/s13059-015-0850-7
+
+
+
+
 
 <br>
 
@@ -199,5 +218,28 @@ We shall follow the tutorial that I wrote in this paper:
 Vuorre M & Curley JP, 2018, Curating Research Assets: A Tutorial on the Git Version Control System, Advances in Methods and Practices in Psychological Science.
 
 It can be accessed in preprint form here - https://mvuorre.github.io/pdf/2017-Vuorre-Curley.pdf 
+
+<br>
+
+
+
+### Week 12-13.  R Package Development
+
+Aim: Students will continue to develop best standard practices for data analysis and reproducible research. Students will learn how to develop simple R packages and how to submit their final package to GitHub and/or CRAN.
+
+In the first class (Week 12), students will be assigned to pairs and will develop their idea for a package.  Students will discuss their package development with other students and troubleshoot with the instructor. Before the second class (week 13), students will submit their final package to GitHub and/or CRAN. During the second class students will orally present their final packages to other students.
+
+Hilary Parker blog - https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/
+Karl Broman blog -  http://kbroman.org/pkg_primer/
+H.Wickham, R Packages, O’Reilly, 2015.
+
+
+<br>
+
+### Week 14 Final Data Project
+
+Aim: Students will produce a large final data analysis project based upon their own research or on publicly available datasets. Students are expected to produce a fully reproducible data project from raw data to final analyses and visualizations. Students will learn to communicate both orally and in writing the results of their data analyses to a target audience. 
+
+Before the class, students will develop their idea for their final data project and generate preliminary ideas about potential interesting research questions. Students will work on their projects and submit the final project to the instructor as well as publishing online at Rpubs.
 
 <br>
