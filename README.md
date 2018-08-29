@@ -230,7 +230,9 @@ Aim: Students will continue to develop best standard practices for data analysis
 In the first class (Week 12), students will be assigned to pairs and will develop their idea for a package.  Students will discuss their package development with other students and troubleshoot with the instructor. Before the second class (week 13), students will submit their final package to GitHub and/or CRAN. During the second class students will orally present their final packages to other students.
 
 Hilary Parker blog - https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/
+
 Karl Broman blog -  http://kbroman.org/pkg_primer/
+
 H.Wickham, R Packages, O’Reilly, 2015.
 
 
