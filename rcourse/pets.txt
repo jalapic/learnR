@@ -1,0 +1,6 @@
+Name	Age	Pet
+James	24	Canary
+Helen	44	Dog
+Steve	31	Horse
+Gemma	17	Cat
+Irene	46	Iguana
