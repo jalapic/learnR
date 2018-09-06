@@ -172,6 +172,9 @@ Please post the finished work as a Gist.  You are encouraged to work on the proj
 
 * Kaggle has many large datasets - https://www.kaggle.com/datasets  - we will view these
 
+* NEW: try Google's dataset search engine:  https://toolbox.google.com/datasetsearch
+
+
 * One of your own choice (e.g. large research project from your lab).
 
 <br>
