@@ -4,6 +4,8 @@ This repo contains materials related to teaching _"R Programming for Behavioral 
 
 The materials are  designed to be used during class with instruction by Prof Curley, but can be read alone also.
 
+
+To access materials for class, you can fork the repo, clone/download the repo using the large green button, or you can download individual folders using the DownGit tool here: https://minhaskamal.github.io/DownGit/
   
    
 <br/>   
